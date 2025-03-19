@@ -39,7 +39,7 @@ credentials_for_provider:
     type: text-input
     required: true
     label:
-      en_US: your website host like https://domain.com
+      en_US: website host
       zh_Hans: 网站地址
     placeholder:
       en_US: Please input your website host
