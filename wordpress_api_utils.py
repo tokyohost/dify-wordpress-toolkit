@@ -193,16 +193,15 @@ class wordpress_api_utils:
         self.proxy()
         mediaId = tool_parameters['mediaId']
         wp_url = self.wp_url + "/wp-json/wp/v2/media/" + str(mediaId)
-
+        params = {}
         if "force" in tool_parameters:
             force = tool_parameters['force']
-            if force:
-                wp_url = wp_url + "?force=true"
+            params["force"] = force.lower()
 
 
         wp_username = self.wp_username
         wp_password = self.wp_password
-        params = {}
+
         params = utils.process_other_parameter(params, tool_parameters)
         auth = HTTPBasicAuth(wp_username, wp_password)
         result = rest_api_utils.call_rest_api("DELETE", wp_url, auth=auth, params=params)
@@ -225,7 +224,7 @@ class wordpress_api_utils:
         params = {}
         if 'force' in tool_parameters:
             force = tool_parameters['force']
-            params["force"] = force
+            params["force"] = force.lower()
         if 'reassign' in tool_parameters:
             reassign = tool_parameters['reassign']
             params["reassign"] = reassign
@@ -354,12 +353,12 @@ class wordpress_api_utils:
         wp_url = self.wp_url + "/wp-json/wp/v2/posts/" + str(post_id)
         wp_username = self.wp_username
         wp_password = self.wp_password
+        params = {}
         if force:
-            wp_url = wp_url + "?force=true"
-
+            params["force"] = force.lower()
         auth = HTTPBasicAuth(wp_username, wp_password)
 
-        result = rest_api_utils.call_rest_api("DELETE", wp_url, auth=auth)
+        result = rest_api_utils.call_rest_api("DELETE", wp_url, auth=auth,params=params)
         return result
 
     def create_tag(self, tool_parameters):
@@ -456,12 +455,13 @@ class wordpress_api_utils:
         wp_url = self.wp_url + "/wp-json/wp/v2/categories/" + str(categoriesId)
         wp_username = self.wp_username
         wp_password = self.wp_password
+        params = {}
         if force:
-            wp_url = wp_url + "?force=true"
+            params["force"] = force.lower()
 
         auth = HTTPBasicAuth(wp_username, wp_password)
 
-        result = rest_api_utils.call_rest_api("DELETE", wp_url, auth=auth)
+        result = rest_api_utils.call_rest_api("DELETE", wp_url, auth=auth,params=params)
         return result
 
     def query_categories(self, tool_parameters):
@@ -489,11 +489,12 @@ class wordpress_api_utils:
         wp_url = self.wp_url + "/wp-json/wp/v2/tags/" + str(tagId)
         wp_username = self.wp_username
         wp_password = self.wp_password
-        if "force" in tool_parameters and tool_parameters["force"] == "true":
-            wp_url = wp_url + "?force=true"
+        params = {}
+        if "force" in tool_parameters:
+            params["force"] = tool_parameters["force"].lower()
 
         auth = HTTPBasicAuth(wp_username, wp_password)
-        params = {}
+
         params = utils.process_other_parameter(params, tool_parameters)
 
         result = rest_api_utils.call_rest_api("DELETE", wp_url, auth=auth,params=params)
@@ -561,7 +562,7 @@ class wordpress_api_utils:
         wp_password = self.wp_password
         params = {}
         if "force" in tool_parameters and tool_parameters["force"] == "true":
-            params["force"] = tool_parameters["force"]
+            params["force"] = tool_parameters["force"].lower()
 
         auth = HTTPBasicAuth(wp_username, wp_password)
 
