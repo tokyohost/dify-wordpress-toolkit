@@ -4,7 +4,6 @@ from datetime import datetime
 
 import requests
 from dify_plugin.errors.tool import ToolProviderCredentialValidationError
-from gevent.testing import params
 from requests.auth import HTTPBasicAuth
 
 import rest_api_utils
@@ -191,12 +190,16 @@ class wordpress_api_utils:
                     ), }
 
     def delete_media(self, tool_parameters):
-        mediaId = tool_parameters['mediaId']
-        force = tool_parameters['force']
         self.proxy()
+        mediaId = tool_parameters['mediaId']
         wp_url = self.wp_url + "/wp-json/wp/v2/media/" + str(mediaId)
-        if force:
-            wp_url = wp_url + "?force=true"
+
+        if "force" in tool_parameters:
+            force = tool_parameters['force']
+            if force:
+                wp_url = wp_url + "?force=true"
+
+
         wp_username = self.wp_username
         wp_password = self.wp_password
         params = {}
@@ -219,13 +222,17 @@ class wordpress_api_utils:
 
     def delete_user(self, tool_parameters):
         userId = tool_parameters['userId']
-        force = tool_parameters['force']
-        reassign = tool_parameters['reassign']
+        params = {}
+        if 'force' in tool_parameters:
+            force = tool_parameters['force']
+            params["force"] = force
+        if 'reassign' in tool_parameters:
+            reassign = tool_parameters['reassign']
+            params["reassign"] = reassign
+
 
         wp_url = self.wp_url + "/wp-json/wp/v2/users/" + str(userId)
-        params = {"force": force, "reassign": reassign}
-        if force and force is True:
-            wp_url = wp_url + "?force=true"
+
 
         params = utils.process_other_parameter(params, tool_parameters)
         wp_username = self.wp_username
@@ -235,10 +242,12 @@ class wordpress_api_utils:
         return result
 
     def query_media(self, tool_parameters):
-        mediaId = tool_parameters['mediaId']
+
         wp_url = self.wp_url + "/wp-json/wp/v2/media"
-        if mediaId:
-            wp_url = wp_url + "/" + str(mediaId)
+        if "mediaId" in tool_parameters:
+            mediaId = tool_parameters['mediaId']
+            if mediaId:
+                wp_url = wp_url + "/" + str(mediaId)
         wp_username = self.wp_username
         wp_password = self.wp_password
         params = {}
@@ -480,7 +489,7 @@ class wordpress_api_utils:
         wp_url = self.wp_url + "/wp-json/wp/v2/tags/" + str(tagId)
         wp_username = self.wp_username
         wp_password = self.wp_password
-        if "force" in tool_parameters and tool_parameters["force"] == "True":
+        if "force" in tool_parameters and tool_parameters["force"] == "true":
             wp_url = wp_url + "?force=true"
 
         auth = HTTPBasicAuth(wp_username, wp_password)
@@ -550,11 +559,12 @@ class wordpress_api_utils:
         wp_url = self.wp_url + "/wp-json/wp/v2/comments/" + str(commentId)
         wp_username = self.wp_username
         wp_password = self.wp_password
-        if "force" in tool_parameters and tool_parameters["force"] == "True":
-            wp_url = wp_url + "?force=true"
+        params = {}
+        if "force" in tool_parameters and tool_parameters["force"] == "true":
+            params["force"] = tool_parameters["force"]
 
         auth = HTTPBasicAuth(wp_username, wp_password)
-        params = {}
+
         params = utils.process_other_parameter(params, tool_parameters)
 
         result = rest_api_utils.call_rest_api("DELETE", wp_url, auth=auth,params=params)

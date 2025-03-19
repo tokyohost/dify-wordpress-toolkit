@@ -34,7 +34,7 @@ def process_other_parameter(data,tool_parameters):
     else:
         return data
 def check_and_cover(tool_parameters):
-    if "otherParamter" in tool_parameters:
+    if "otherParamter" in tool_parameters and tool_parameters["otherParamter"]:
         return cover_other_parameter(tool_parameters["otherParamter"])
     else:
         return None

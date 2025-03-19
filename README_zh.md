@@ -3,7 +3,7 @@
 **Author:** tokyohost
 **Version:** 0.0.1
 **Type:** tool
-a powerful wordpress REST API plugin for dify
+a powerful opensource wordpress REST API plugin for dify
 ### Description
 
 ## Features
