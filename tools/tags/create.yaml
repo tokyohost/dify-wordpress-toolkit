@@ -1,0 +1,70 @@
+identity:
+  name: wordpress-api-tag-create
+  author: tokyohost
+  label:
+    en_US: create tag
+    zh_Hans: 创建标签
+    pt_BR: create tag
+
+description:
+  human:
+    en_US: create wordpress tag by REST API
+    zh_Hans: 通过REST API 创建标签
+    pt_BR: create wordpress tag by REST API
+  llm: create wordpress tag by REST API
+parameters:
+  - name: name
+    type: string
+    required: true
+    label:
+      en_US: tag name
+      zh_Hans: 标签名称
+      pt_BR: tag name
+    human_description:
+      en_US: tag name
+      zh_Hans: 标签名称
+      pt_BR: tag name
+    llm_description: tag name
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: tag slug
+      zh_Hans: 标签别名
+      pt_BR: tag slug
+    human_description:
+      en_US: tag slug
+      zh_Hans: 标签别名
+      pt_BR: tag slug
+    llm_description: tag slug
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: tag description
+      zh_Hans: 标签描述
+      pt_BR: tag description
+    human_description:
+      en_US: tag description
+      zh_Hans: 标签描述
+      pt_BR: tag description
+    llm_description: tag description
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/tags/create.py

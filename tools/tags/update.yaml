@@ -1,0 +1,83 @@
+identity:
+  name: wordpress-api-tag-update
+  author: tokyohost
+  label:
+    en_US: update tag
+    zh_Hans: 更新标签
+    pt_BR: update tag
+
+description:
+  human:
+    en_US: update wordpress tag by REST API
+    zh_Hans: 通过REST API 更新标签
+    pt_BR: update wordpress tag by REST API
+  llm: update wordpress tag by REST API
+parameters:
+  - name: tagId
+    type: number
+    required: true
+    label:
+      en_US: tag id
+      zh_Hans: 标签id
+      pt_BR: tag id
+    human_description:
+      en_US: The tag id you want to update
+      zh_Hans: 标签id
+      pt_BR: The tag id you want to update
+    llm_description: The tag id you want to update
+    form: llm
+  - name: name
+    type: string
+    required: false
+    label:
+      en_US: tag name
+      zh_Hans: 标签名称
+      pt_BR: tag name
+    human_description:
+      en_US: The tag name you want to update
+      zh_Hans: 标签名称
+      pt_BR: The tag name you want to update
+    llm_description: The tag name you want to update
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: tag slug
+      zh_Hans: 标签别名
+      pt_BR: tag slug
+    human_description:
+      en_US: The tag slug you want to update
+      zh_Hans: 标签别名
+      pt_BR: The tag slug you want to update
+    llm_description: The tag slug you want to update
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: tag description
+      zh_Hans: 标签描述
+      pt_BR: tag description
+    human_description:
+      en_US: The tag description you want to update
+      zh_Hans: 标签描述
+      pt_BR: The tag description you want to update
+    llm_description: The tag description you want to update
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/tags/update.py

@@ -1,0 +1,96 @@
+identity:
+  name: wordpress-api-media-update
+  author: tokyohost
+  label:
+    en_US: update media
+    zh_Hans: 更新媒体资源
+    pt_BR: update media
+
+description:
+  human:
+    en_US: update wordpress media by REST API
+    zh_Hans: 通过REST API 上传媒体资源
+    pt_BR: update wordpress media by REST API
+  llm: update wordpress media by REST API
+parameters:
+  - name: mediaId
+    type: number
+    required: true
+    label:
+      en_US: need to update file
+      zh_Hans: 媒体文件
+      pt_BR: need to update file
+    human_description:
+      en_US: need to update file
+      zh_Hans: 媒体文件
+      pt_BR: need to update file
+    llm_description: need to upload file
+    form: llm
+  - name: title
+    type: string
+    required: false
+    label:
+      en_US: media title
+      zh_Hans: 标题
+      pt_BR: media title
+    human_description:
+      en_US: media title
+      zh_Hans: 媒体文件标题
+      pt_BR: media title
+    llm_description: media title
+    form: llm
+  - name: alt_text
+    type: string
+    required: false
+    label:
+      en_US: media alt_text
+      zh_Hans: 标题
+      pt_BR: media alt_text
+    human_description:
+      en_US: media alt_text
+      zh_Hans: 媒体文件 alt
+      pt_BR: media alt_text
+    llm_description: media alt_text
+    form: llm
+  - name: caption
+    type: string
+    required: false
+    label:
+      en_US: media caption
+      zh_Hans: caption
+      pt_BR: media caption
+    human_description:
+      en_US: media caption
+      zh_Hans: 媒体文件 caption
+      pt_BR: media caption
+    llm_description: media caption
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: media description
+      zh_Hans: description
+      pt_BR: media description
+    human_description:
+      en_US: media description
+      zh_Hans: 媒体文件 description
+      pt_BR: media description
+    llm_description: media description
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/media/update.py

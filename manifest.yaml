@@ -1,0 +1,50 @@
+version: 0.0.1
+type: plugin
+author: tokyohost
+name: dify-wordpress-toolkit
+label:
+  en_US: wordpress-toolkit
+  ja_JP: wordpress-toolkit
+  zh_Hans: wordpress-toolkit
+  pt_BR: wordpress-toolkit
+description:
+  en_US: manage wordpress  by REST API
+  ja_JP: manage wordpress  by REST API
+  zh_Hans: manage wordpress  by REST API
+  pt_BR: manage wordpress  by REST API
+icon: icon.svg
+resource:
+  memory: 268435456
+  permission:
+    tool:
+      enabled: true
+    model:
+      enabled: true
+      llm: false
+      text_embedding: false
+      rerank: false
+      tts: false
+      speech2text: false
+      moderation: false
+    endpoint:
+      enabled: true
+    app:
+      enabled: true
+    storage:
+      enabled: true
+      size: 1048576
+plugins:
+  tools:
+    - provider/wordpress_api.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+created_at: 2025-03-17T11:05:25.8460016+08:00
+privacy: PRIVACY.md
+verified: false

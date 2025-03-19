@@ -1,0 +1,156 @@
+identity:
+  name: wordpress-api-user-update
+  author: tokyohost
+  label:
+    en_US: update user
+    zh_Hans: 更新用户
+    pt_BR: update user
+
+description:
+  human:
+    en_US: update wordpress user by REST API
+    zh_Hans: 通过REST API 更新用户
+    pt_BR: update wordpress user by REST API
+  llm: update wordpress user by REST API
+parameters:
+  - name: userId
+    type: number
+    required: true
+    label:
+      en_US: user id
+      zh_Hans: 用户 id
+      pt_BR: user id
+    human_description:
+      en_US: The user ID that needs to be updated
+      zh_Hans: 用户id
+      pt_BR: The user ID that needs to be updated
+    llm_description: The user ID that needs to be updated
+    form: llm
+  - name: roles
+    type: select
+    required: false
+    label:
+      en_US: roles
+      zh_Hans: 用户角色
+      pt_BR: roles
+    human_description:
+      en_US: User roles that need to be updated
+      zh_Hans: 用户角色
+      pt_BR: User roles that need to be updated
+    llm_description: User roles that need to be updated
+    options:
+      - label:
+          en_US: administrator
+          zh_Hans: administrator
+        value: administrator
+      - label:
+          en_US: editor
+          zh_Hans: editor
+        value: editor
+      - label:
+          en_US: author
+          zh_Hans: author
+        value: author
+      - label:
+          en_US: contributor
+          zh_Hans: contributor
+        value: contributor
+      - label:
+          en_US: subscriber
+          zh_Hans: subscriber
+        value: subscriber
+    form: llm
+  - name: username
+    type: string
+    required: false
+    label:
+      en_US: username
+      zh_Hans: 用户名
+      pt_BR: username
+    human_description:
+      en_US: Username that needs to be updated
+      zh_Hans: 用户名
+      pt_BR: Username that needs to be updated
+    llm_description: Username that needs to be updated
+    form: llm
+  - name: name
+    type: string
+    required: false
+    label:
+      en_US: nike name
+      zh_Hans: 用户昵称
+      pt_BR: nike name
+    human_description:
+      en_US: Updated user nickname
+      zh_Hans: 用户昵称
+      pt_BR:  Updated user nickname
+    llm_description: Updated user nickname
+    form: llm
+  - name: last_name
+    type: string
+    required: false
+    label:
+      en_US: last_name
+      zh_Hans: 姓氏
+      pt_BR: last_name
+    human_description:
+      en_US: last_name that need to be updated
+      zh_Hans: 姓氏
+      pt_BR: last_name that need to be updated
+    llm_description: last_name that need to be updated
+    form: llm
+  - name: first_name
+    type: string
+    required: false
+    label:
+      en_US: first_name
+      zh_Hans: 名
+      pt_BR: first_name
+    human_description:
+      en_US: first_name that need to be updated
+      zh_Hans: 名
+      pt_BR: first_name that need to be updated
+    llm_description: first_name that need to be updated
+    form: llm
+  - name: email
+    type: string
+    required: false
+    label:
+      en_US: email
+      zh_Hans: 邮箱
+      pt_BR: email
+    human_description:
+      en_US: email that need to be updated
+      zh_Hans: 邮箱
+      pt_BR: email that need to be updated
+    llm_description: email that need to be updated
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: description
+      zh_Hans: 简介
+      pt_BR: description
+    human_description:
+      en_US: description
+      zh_Hans: 简介
+      pt_BR: description
+    llm_description: please input description
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/user/update.py

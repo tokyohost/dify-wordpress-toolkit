@@ -1,0 +1,31 @@
+identity:
+  name: wordpress-api-media-upload
+  author: tokyohost
+  label:
+    en_US: upload media
+    zh_Hans: 上传媒体资源
+    pt_BR: upload media
+
+description:
+  human:
+    en_US: upload media by REST API
+    zh_Hans: 通过REST API 上传媒体资源
+    pt_BR: upload media by REST API
+  llm: upload media by REST API
+parameters:
+  - name: file
+    type: file
+    required: true
+    label:
+      en_US: need to upload file
+      zh_Hans: 媒体文件
+      pt_BR: need to upload file
+    human_description:
+      en_US: need to upload file
+      zh_Hans: 媒体文件
+      pt_BR: need to upload file
+    llm_description: need to upload file
+    form: llm
+extra:
+  python:
+    source: tools/media/upload.py

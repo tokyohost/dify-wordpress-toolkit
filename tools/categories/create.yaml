@@ -1,0 +1,57 @@
+identity:
+  name: wordpress-api-categories-create
+  author: tokyohost
+  label:
+    en_US: create categories
+    zh_Hans: 创建分类
+    pt_BR: create categories
+
+description:
+  human:
+    en_US: create wordpress categories by REST API
+    zh_Hans: 通过REST API 新增分类
+    pt_BR: create wordpress categories by REST API
+  llm: create wordpress categories by REST API
+parameters:
+  - name: name
+    type: string
+    required: true
+    label:
+      en_US: categories name
+      zh_Hans: 分类名称
+      pt_BR: categories name
+    human_description:
+      en_US: categories name
+      zh_Hans: 分类名称
+      pt_BR: categories name
+    llm_description: categories name
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: categories slug
+      zh_Hans: 分类别名
+      pt_BR: categories slug
+    human_description:
+      en_US: categories slug
+      zh_Hans: 分类别名
+      pt_BR: categories slug
+    llm_description: categories slug
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: categories description
+      zh_Hans: 分类描述
+      pt_BR: categories description
+    human_description:
+      en_US: categories description
+      zh_Hans: 分类描述
+      pt_BR: categories description
+    llm_description: categories description
+    form: llm
+extra:
+  python:
+    source: tools/categories/create.py

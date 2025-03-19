@@ -1,0 +1,44 @@
+identity:
+  name: wordpress-api-user-query
+  author: tokyohost
+  label:
+    en_US: query user
+    zh_Hans: 查询用户
+    pt_BR: query user
+
+description:
+  human:
+    en_US: query wordpress user by REST API
+    zh_Hans: 通过REST API 查询用户
+    pt_BR: query wordpress user by REST API
+  llm: query wordpress user by REST API
+parameters:
+  - name: username
+    type: string
+    required: true
+    label:
+      en_US: username
+      zh_Hans: 用户名
+      pt_BR: username
+    human_description:
+      en_US: Query users based on their usernames
+      zh_Hans: 根据用户名查询
+      pt_BR: Query users based on their usernames
+    llm_description: Query users based on their usernames
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/user/query.py

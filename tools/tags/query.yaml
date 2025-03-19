@@ -1,0 +1,57 @@
+identity:
+  name: wordpress-api-tag-query
+  author: tokyohost
+  label:
+    en_US: query tags
+    zh_Hans: 查询标签
+    pt_BR: query tags
+
+description:
+  human:
+    en_US: query wordpress tag by REST API
+    zh_Hans: 通过REST API 查询标签
+    pt_BR: query wordpress tag by REST API
+  llm: query wordpress tag by REST API
+parameters:
+  - name: tagName
+    type: string
+    required: false
+    label:
+      en_US: tag name
+      zh_Hans: 标签名称查询
+      pt_BR: tag name
+    human_description:
+      en_US: The tag name you want to query
+      zh_Hans: 标签名称查询
+      pt_BR: The tag name you want to query
+    llm_description: The tag name you want to query
+    form: llm
+  - name: tagId
+    type: number
+    required: false
+    label:
+      en_US: tag id
+      zh_Hans: 标签id查询
+      pt_BR: tag id
+    human_description:
+      en_US: The tag id you want to query
+      zh_Hans: 标签id查询
+      pt_BR: The tag id you want to query
+    llm_description: The tag id you want to query
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/tags/query.py

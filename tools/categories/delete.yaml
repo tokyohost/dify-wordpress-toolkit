@@ -1,0 +1,53 @@
+identity:
+  name: wordpress-api-categories-delete
+  author: tokyohost
+  label:
+    en_US: delete categories
+    zh_Hans: 删除分类
+    pt_BR: delete categories
+
+description:
+  human:
+    en_US: delete wordpress categories by REST API
+    zh_Hans: 通过REST API 删除分类
+    pt_BR: delete wordpress categories by REST API
+  llm: delete wordpress categories by REST API
+parameters:
+  - name: categoriesId
+    type: number
+    required: true
+    label:
+      en_US: categories id
+      zh_Hans: 分类id
+      pt_BR: categories id
+    human_description:
+      en_US: categories id
+      zh_Hans: 分类id
+      pt_BR: categories id
+    llm_description: categories id
+    form: llm
+  - name: force
+    type: select
+    required: false
+    label:
+      en_US: force delete
+      zh_Hans: 强制删除
+      pt_BR: force delete
+    human_description:
+      en_US: force delete
+      zh_Hans: true(永久删除，不进入回收站) false(进入回收站)
+      pt_BR: force delete
+    llm_description: please input force delete
+    form: llm
+    options:
+      - label:
+          en_US: force delete
+          zh_Hans: 永久删除，不进入回收站
+        value: True
+      - label:
+          en_US: force delete
+          zh_Hans: 放入回收站
+        value: False
+extra:
+  python:
+    source: tools/categories/delete.py

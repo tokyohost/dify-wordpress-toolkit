@@ -1,0 +1,66 @@
+identity:
+  name: wordpress-api-posts-delete
+  author: tokyohost
+  label:
+    en_US: delete posts
+    zh_Hans: 删除文章
+    pt_BR: delete posts
+
+description:
+  human:
+    en_US: manage wordpress posts by REST API
+    zh_Hans: 通过REST API 删除文章
+    pt_BR: manage wordpress posts by REST API
+  llm: manage wordpress posts by REST API
+parameters:
+  - name: postId
+    type: number
+    required: true
+    label:
+      en_US: postId
+      zh_Hans: 文章ID
+      pt_BR: postId
+    human_description:
+      en_US: postId
+      zh_Hans: 文章ID
+      pt_BR: postId
+    llm_description: please input postId
+    form: llm
+  - name: force
+    type: select
+    required: false
+    label:
+      en_US: force delete
+      zh_Hans: 强制删除
+      pt_BR: force delete
+    human_description:
+      en_US: Permanently delete without entering the recycle bin
+      zh_Hans: 强制删除不会放入回收站
+      pt_BR: Permanently delete without entering the recycle bin
+    llm_description: please input force delete
+    form: llm
+    options:
+      - label:
+          en_US: force delete
+          zh_Hans: 永久删除，不进入回收站
+        value: True
+      - label:
+          en_US: delete
+          zh_Hans: 放入回收站
+        value: False
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/posts/delete.py

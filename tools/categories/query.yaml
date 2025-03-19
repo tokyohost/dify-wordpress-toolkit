@@ -1,0 +1,44 @@
+identity:
+  name: wordpress-api-categories-query
+  author: tokyohost
+  label:
+    en_US: query categories
+    zh_Hans: 查询分类
+    pt_BR: query categories
+
+description:
+  human:
+    en_US: query wordpress categories by REST API
+    zh_Hans: 通过REST API 查询分类
+    pt_BR: query wordpress categories by REST API
+  llm: query wordpress categories by REST API
+parameters:
+  - name: categoriesId
+    type: number
+    required: false
+    label:
+      en_US: categories id
+      zh_Hans: 根据分类id查询
+      pt_BR: categories id
+    human_description:
+      en_US: query wordpress categories by postid
+      zh_Hans: 根据分类id查询
+      pt_BR: query wordpress categories by postid
+    llm_description: please input categoriesId
+    form: llm
+  - name: categoriesName
+    type: string
+    required: false
+    label:
+      en_US: categories name
+      zh_Hans: 根据分类名称查询
+      pt_BR: categories name
+    human_description:
+      en_US: query wordpress categories by postid
+      zh_Hans: 根据分类名称查询
+      pt_BR: query wordpress categories by postid
+    llm_description: please input categories name
+    form: llm
+extra:
+  python:
+    source: tools/categories/query.py

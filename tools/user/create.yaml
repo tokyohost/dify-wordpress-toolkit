@@ -1,0 +1,156 @@
+identity:
+  name: wordpress-api-user-create
+  author: tokyohost
+  label:
+    en_US: create user
+    zh_Hans: 创建用户
+    pt_BR: create user
+
+description:
+  human:
+    en_US: create wordpress user by REST API
+    zh_Hans: 通过REST API 创建用户
+    pt_BR: create wordpress user by REST API
+  llm: create wordpress user by REST API
+parameters:
+  - name: roles
+    type: select
+    required: true
+    label:
+      en_US: roles
+      zh_Hans: 用户角色
+      pt_BR: roles
+    human_description:
+      en_US: The role of the user to be created
+      zh_Hans: 用户角色
+      pt_BR: The role of the user to be created
+    llm_description: please select roles
+    options:
+      - label:
+          en_US: administrator
+          zh_Hans: administrator
+        value: administrator
+      - label:
+          en_US: editor
+          zh_Hans: editor
+        value: editor
+      - label:
+          en_US: author
+          zh_Hans: author
+        value: author
+      - label:
+          en_US: contributor
+          zh_Hans: contributor
+        value: contributor
+      - label:
+          en_US: subscriber
+          zh_Hans: subscriber
+        value: subscriber
+    form: llm
+  - name: username
+    type: string
+    required: true
+    label:
+      en_US: username
+      zh_Hans: 用户名
+      pt_BR: username
+    human_description:
+      en_US: username
+      zh_Hans: 用户名
+      pt_BR: username
+    llm_description: please input username
+    form: llm
+  - name: name
+    type: string
+    required: true
+    label:
+      en_US: nike name
+      zh_Hans: 用户昵称
+      pt_BR: nike name
+    human_description:
+      en_US: nike name
+      zh_Hans: 用户昵称
+      pt_BR:  nike name
+    llm_description: please input  nike name
+    form: llm
+  - name: last_name
+    type: string
+    required: true
+    label:
+      en_US: last_name
+      zh_Hans: 姓氏
+      pt_BR: last_name
+    human_description:
+      en_US: last_name
+      zh_Hans: 姓氏
+      pt_BR: last_name
+    llm_description: please input last_name
+    form: llm
+  - name: first_name
+    type: string
+    required: true
+    label:
+      en_US: first_name
+      zh_Hans: 名
+      pt_BR: first_name
+    human_description:
+      en_US: first_name
+      zh_Hans: 名
+      pt_BR: first_name
+    llm_description: please input first_name
+    form: llm
+  - name: email
+    type: string
+    required: true
+    label:
+      en_US: email
+      zh_Hans: 邮箱
+      pt_BR: email
+    human_description:
+      en_US: email
+      zh_Hans: 邮箱
+      pt_BR: email
+    llm_description: please input email
+    form: llm
+  - name: password
+    type: string
+    required: false
+    label:
+      en_US: password
+      zh_Hans: 密码
+      pt_BR: password
+    human_description:
+      en_US: password if empty will create random password
+      zh_Hans: 密码(如不填则生成随机密码)
+      pt_BR: password if empty will create random password
+    llm_description: password if empty will create random password
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: description
+      zh_Hans: 简介
+      pt_BR: description
+    human_description:
+      en_US: description
+      zh_Hans: 简介
+      pt_BR: description
+    llm_description: please input description
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/user/create.py

@@ -1,0 +1,59 @@
+identity:
+  name: wordpress-api-comments-delete
+  author: tokyohost
+  label:
+    en_US: delete comments
+    zh_Hans: 删除评论
+    pt_BR: delete comments
+
+description:
+  human:
+    en_US: delete wordpress comments by REST API
+    zh_Hans: 通过REST API 删除评论
+    pt_BR: delete wordpress comments by REST API
+  llm: delete wordpress comments by REST API
+parameters:
+  - name: commentId
+    type: number
+    required: true
+    label:
+      en_US: comment id
+      zh_Hans: 评论id
+      pt_BR: comment id
+    human_description:
+      en_US: The ID of the comment you want to delete on
+      zh_Hans: 评论id
+      pt_BR: The ID of the comment you want to delete on
+    llm_description: The ID of the comment you want to delete on
+    form: llm
+  - name: force
+    type: boolean
+    required: false
+    default: False
+    label:
+      en_US: need force delete?
+      zh_Hans: 是否强制删除
+      pt_BR: need force delete?
+    human_description:
+      en_US: force delete media
+      zh_Hans: 强制删除文件
+      pt_BR: force delete media
+    llm_description: force delete media
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+
+extra:
+  python:
+    source: tools/tags/create.py

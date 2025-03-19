@@ -1,0 +1,44 @@
+identity:
+  name: wordpress-api-media-query
+  author: tokyohost
+  label:
+    en_US: query media
+    zh_Hans: 查询媒体资源
+    pt_BR: query media
+
+description:
+  human:
+    en_US: manage wordpress media by REST API
+    zh_Hans: 通过REST API 查询媒体资源
+    pt_BR: manage wordpress media by REST API
+  llm: manage wordpress media by REST API
+parameters:
+  - name: mediaId
+    type: number
+    required: false
+    label:
+      en_US: media id
+      zh_Hans: 媒体文件id
+      pt_BR: media id
+    human_description:
+      en_US: media id if empty return All media
+      zh_Hans: 媒体文件id 不填则查询所有媒体文件
+      pt_BR:  media id if empty return All media
+    llm_description:  media id
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/media/query.py

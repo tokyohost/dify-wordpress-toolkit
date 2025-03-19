@@ -1,0 +1,59 @@
+identity:
+  name: wordpress-api-comments-update
+  author: tokyohost
+  label:
+    en_US: update comments
+    zh_Hans: 更新评论
+    pt_BR: update comments
+
+description:
+  human:
+    en_US: update wordpress comments by REST API
+    zh_Hans: 通过REST API 更新评论
+    pt_BR: update wordpress comments by REST API
+  llm: update wordpress comments by REST API
+parameters:
+  - name: commentId
+    type: number
+    required: true
+    label:
+      en_US: comment id
+      zh_Hans: 评论id
+      pt_BR: comment id
+    human_description:
+      en_US: The ID of the comment you want to update on
+      zh_Hans: 想修改的评论id
+      pt_BR: The ID of the comment you want to update on
+    llm_description: The ID of the comment you want to update on
+    form: llm
+  - name: content
+    type: string
+    required: true
+    label:
+      en_US: content
+      zh_Hans: 评论内容
+      pt_BR: content
+    human_description:
+      en_US: comments content
+      zh_Hans: 评论内容
+      pt_BR: comments content
+    llm_description: comments content
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+
+
+extra:
+  python:
+    source: tools/tags/create.py

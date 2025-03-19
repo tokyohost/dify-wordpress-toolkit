@@ -1,0 +1,58 @@
+identity:
+  name: wordpress-api-media-delete
+  author: tokyohost
+  label:
+    en_US: delete media
+    zh_Hans: 删除媒体资源
+    pt_BR: delete media
+
+description:
+  human:
+    en_US: manage wordpress media by REST API
+    zh_Hans: 通过REST API 删除媒体资源
+    pt_BR: manage wordpress media by REST API
+  llm: manage wordpress media by REST API
+parameters:
+  - name: mediaId
+    type: number
+    required: true
+    label:
+      en_US: media id
+      zh_Hans: 媒体文件id
+      pt_BR: media id
+    human_description:
+      en_US: media id
+      zh_Hans: 媒体文件id
+      pt_BR:  media id
+    llm_description:  media id
+    form: llm
+  - name: force
+    type: boolean
+    required: false
+    default: False
+    label:
+      en_US: need force delete?
+      zh_Hans: 是否强制删除
+      pt_BR: need force delete?
+    human_description:
+      en_US: force delete media
+      zh_Hans: 强制删除文件
+      pt_BR: force delete media
+    llm_description: force delete media
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/media/delete.py

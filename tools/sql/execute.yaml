@@ -1,0 +1,32 @@
+identity:
+  name: wordpress-api-sql-execute
+  author: tokyohost
+  label:
+    en_US: execute sql
+    zh_Hans: 执行SQL
+    pt_BR: execute sql
+
+description:
+  human:
+    en_US: Manage wordpress via SQL (support SELECT,DELETE,UPDATE,INSERT)
+    zh_Hans: 执行SQL
+    pt_BR: Manage wordpress via SQL (support SELECT,DELETE,UPDATE,INSERT)
+  llm: Manage wordpress via SQL
+parameters:
+  - name: sql
+    type: string
+    required: true
+    label:
+      en_US: sql commands
+      zh_Hans: SQL命令
+      pt_BR: sql commands
+    human_description:
+      en_US: sql commands
+      zh_Hans: 执行的SQL 命令
+      pt_BR: sql commands
+    llm_description: sql commands
+    form: llm
+
+extra:
+  python:
+    source: tools/sql/execute.py

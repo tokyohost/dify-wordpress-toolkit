@@ -1,0 +1,44 @@
+identity:
+  name: wordpress-api-user-update-avatar
+  author: tokyohost
+  label:
+    en_US: update user avatar
+    zh_Hans: 更新用户头像
+    pt_BR: update user avatar
+
+description:
+  human:
+    en_US: update wordpress user avatar by REST API
+    zh_Hans: 更新用户头像，必须安装 simple_local_avatar 插件，并提供数据库信息！(用于修改media 所属上传用户)
+    pt_BR: update wordpress user avatar by REST API
+  llm: update wordpress user avatar by REST API
+parameters:
+  - name: userid
+    type: number
+    required: true
+    label:
+      en_US: userid
+      zh_Hans: 用户id
+      pt_BR: userid
+    human_description:
+      en_US: update avatar user id
+      zh_Hans: 需要修改用户的id
+      pt_BR: update avatar user id
+    llm_description: update avatar user id
+    form: llm
+  - name: avatar_file
+    type: file
+    required: true
+    label:
+      en_US: new avatar
+      zh_Hans: 新的头像
+      pt_BR: new avatar
+    human_description:
+      en_US: new avatar file
+      zh_Hans: 新的头像
+      pt_BR: new avatar file
+    llm_description: new avatar file
+    form: llm
+extra:
+  python:
+    source: tools/user/update_avatar.py

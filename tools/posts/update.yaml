@@ -1,0 +1,197 @@
+identity:
+  name: wordpress-api-posts-update
+  author: tokyohost
+  label:
+    en_US: update posts
+    zh_Hans: 更新文章
+    pt_BR: update posts
+
+description:
+  human:
+    en_US: manage wordpress posts by REST API
+    zh_Hans: 通过REST API 更新文章
+    pt_BR: manage wordpress posts by REST API
+  llm: manage wordpress posts by REST API
+parameters:
+  - name: postId
+    type: number
+    required: true
+    label:
+      en_US: postId
+      zh_Hans: 文章ID
+      pt_BR: postId
+    human_description:
+      en_US: postId
+      zh_Hans: 文章ID
+      pt_BR: postId
+    llm_description: please input postId
+    form: llm
+  - name: title
+    type: string
+    required: false
+    label:
+      en_US: title
+      zh_Hans: 标题
+      pt_BR: title
+    human_description:
+      en_US: title
+      zh_Hans: 文章标题
+      pt_BR: title
+    llm_description: please input title
+    form: llm
+  - name: content
+    type: string
+    required: false
+    label:
+      en_US: content
+      zh_Hans: 文章内容
+      pt_BR: content
+    human_description:
+      en_US: content
+      zh_Hans: 文章内容
+      pt_BR: content
+    llm_description: please input content
+    form: llm
+  - name: status
+    type: select
+    required: false
+    label:
+      en_US: status
+      zh_Hans: 文章状态
+      pt_BR: status
+    human_description:
+      en_US: status
+      zh_Hans: 文章状态
+      pt_BR: status
+    llm_description: please select status
+    options:
+      - label:
+          en_US: draft
+          zh_Hans: 草稿
+        value: draft
+      - label:
+          en_US: publish
+          zh_Hans: 公开
+        value: publish
+      - label:
+          en_US: pending
+          zh_Hans: 待审核
+        value: pending
+      - label:
+          en_US: future
+          zh_Hans: 定时发布
+        value: future
+      - label:
+          en_US: subscriber
+          zh_Hans: subscriber
+        value: subscriber
+    form: llm
+
+  - name: excerpt
+    type: string
+    required: false
+    label:
+      en_US: excerpt
+      zh_Hans: 文章摘要
+      pt_BR: excerpt
+    human_description:
+      en_US: excerpt
+      zh_Hans: 文章摘要
+      pt_BR: excerpt
+    llm_description: please input excerpt
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: slug
+      zh_Hans: 自定义 URL
+      pt_BR: slug
+    human_description:
+      en_US: slug
+      zh_Hans: 自定义 URL
+      pt_BR: slug
+    llm_description: please input slug
+    form: llm
+
+  - name: date
+    type: string
+    required: false
+    label:
+      en_US: date
+      zh_Hans: 文章发布时间
+      pt_BR: date
+    human_description:
+      en_US: date
+      zh_Hans: 文章发布时间 (YYYY-MM-DD HH:mm:ss)
+      pt_BR: date
+    llm_description: please input post date
+    form: llm
+  - name: author
+    type: number
+    required: false
+    label:
+      en_US: author
+      zh_Hans: 作者id
+      pt_BR: author
+    human_description:
+      en_US: author id
+      zh_Hans: 作者id
+      pt_BR: author id
+    llm_description: please input post author
+    form: llm
+  - name: categories
+    type: string
+    required: false
+    label:
+      en_US: categories
+      zh_Hans: 分类 id
+      pt_BR: categories
+    human_description:
+      en_US: categories id example 1,2 Multiple IDs are concatenated using ,
+      zh_Hans: 分类 id 数组形式 示例:1,2 多个用逗号拼接
+      pt_BR: categories id example 1,2 Multiple IDs are concatenated using ,
+    llm_description: please input categories
+    form: llm
+  - name: tags
+    type: string
+    required: false
+    label:
+      en_US: tags
+      zh_Hans: 标签 id
+      pt_BR: tags
+    human_description:
+      en_US: tags id example 1,2 Multiple IDs are concatenated using ,
+      zh_Hans: 标签 id 数组形式 示例:1,2 多个用逗号拼接
+      pt_BR: tags id example 1,2 Multiple IDs are concatenated using ,
+    llm_description: please input tags id
+    form: llm
+  - name: featured_media
+    type: number
+    required: false
+    label:
+      en_US: featuredMedia
+      zh_Hans: 特色图片
+      pt_BR: featuredMedia
+    human_description:
+      en_US: featured media id example 12
+      zh_Hans: 特色图像media id
+      pt_BR: featured media id example 12
+    llm_description: please input featured media id
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/posts/update.py

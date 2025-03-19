@@ -1,0 +1,31 @@
+identity:
+  name: wordpress-api-user-query-by-userid
+  author: tokyohost
+  label:
+    en_US: query user by userid
+    zh_Hans: 根据id查询用户
+    pt_BR: query user by userid
+
+description:
+  human:
+    en_US: query wordpress user by REST API
+    zh_Hans: 通过REST API 查询用户
+    pt_BR: query wordpress user by REST API
+  llm: query wordpress user by REST API
+parameters:
+  - name: userid
+    type: number
+    required: true
+    label:
+      en_US: userid
+      zh_Hans: 用户id
+      pt_BR: userid
+    human_description:
+      en_US: Query users based on their IDs
+      zh_Hans: 根据用户id查询
+      pt_BR: Query users based on their IDs
+    llm_description: Query users based on their IDs
+    form: llm
+extra:
+  python:
+    source: tools/user/query_by_id.py

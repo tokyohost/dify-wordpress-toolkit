@@ -1,0 +1,57 @@
+identity:
+  name: wordpress-api-posts-query
+  author: tokyohost
+  label:
+    en_US: query posts
+    zh_Hans: 查询文章
+    pt_BR: query posts
+
+description:
+  human:
+    en_US: manage wordpress user by REST API
+    zh_Hans: 通过REST API 查询文章
+    pt_BR: manage wordpress user by REST API
+  llm: manage wordpress user by REST API
+parameters:
+  - name: postsId
+    type: number
+    required: false
+    label:
+      en_US: Query post id
+      zh_Hans: 根据文章id查询
+      pt_BR: Query post id
+    human_description:
+      en_US: query wordpress posts by postid
+      zh_Hans: 根据文章id查询
+      pt_BR: query wordpress posts by postid
+    llm_description: please input postsId
+    form: llm
+  - name: categories
+    type: number
+    required: false
+    label:
+      en_US: categories id
+      zh_Hans: 根据分类id查询
+      pt_BR: categories id
+    human_description:
+      en_US: query wordpress posts by categories id
+      zh_Hans: 根据文章id查询
+      pt_BR: query wordpress posts by categories id
+    llm_description: please input categories id
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/posts/query.py

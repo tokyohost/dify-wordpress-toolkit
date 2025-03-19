@@ -1,0 +1,70 @@
+identity:
+  name: wordpress-api-categories-update
+  author: tokyohost
+  label:
+    en_US: update categories
+    zh_Hans: 更新分类
+    pt_BR: update categories
+
+description:
+  human:
+    en_US: update wordpress categories by REST API
+    zh_Hans: 通过REST API 更新分类
+    pt_BR: update wordpress categories by REST API
+  llm: update wordpress categories by REST API
+parameters:
+  - name: categoriesId
+    type: number
+    required: true
+    label:
+      en_US: categories id
+      zh_Hans: 分类id
+      pt_BR: categories id
+    human_description:
+      en_US: categories id
+      zh_Hans: 分类id
+      pt_BR: categories id
+    llm_description: categories id
+    form: llm
+  - name: name
+    type: string
+    required: false
+    label:
+      en_US: categories name
+      zh_Hans: 分类名称
+      pt_BR: categories name
+    human_description:
+      en_US: categories name
+      zh_Hans: 分类名称
+      pt_BR: categories name
+    llm_description: categories name
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: categories slug
+      zh_Hans: 分类别名
+      pt_BR: categories slug
+    human_description:
+      en_US: categories slug
+      zh_Hans: 分类别名
+      pt_BR: categories slug
+    llm_description: categories slug
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: categories description
+      zh_Hans: 分类描述
+      pt_BR: categories description
+    human_description:
+      en_US: categories description
+      zh_Hans: 分类描述
+      pt_BR: categories description
+    llm_description: categories description
+    form: llm
+extra:
+  python:
+    source: tools/categories/update.py

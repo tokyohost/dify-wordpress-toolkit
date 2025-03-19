@@ -1,0 +1,140 @@
+identity:
+  author: tokyohost
+  name: dify-wordpress-toolkit
+  label:
+    en_US:  wordpress toolkit
+    zh_Hans: WordPress REST API
+    pt_BR:  wordpress toolkit
+  description:
+    en_US: manage wordpress  by REST API
+    zh_Hans: manage wordpress  by REST API
+    pt_BR: manage wordpress  by REST API
+  icon: icon.svg
+credentials_for_provider:
+  rest_api_username:
+    type: text-input
+    required: true
+    label:
+      en_US: wordpress username
+      zh_Hans: wordpress 用户名
+    placeholder:
+      en_US: Please input your wordpress username
+      zh_Hans: 请输入你的wordpress 用户名
+    help:
+      en_US: Get your  wordpress username from http://Your Website//wp-admin/profile.php
+      zh_Hans: 从 http://你的域名//wp-admin/profile.php 获取您的用户名
+  rest_api_secret_passwd:
+    type: secret-input
+    required: true
+    label:
+      en_US: wordpress password
+      zh_Hans: 应用程序密码
+    placeholder:
+      en_US: Please input your wordpress REST API passwd
+      zh_Hans: 请输入你创建的应用程序密码
+    help:
+      en_US: Get your REST API passwd from http://Your Website//wp-admin/profile.php
+      zh_Hans: 从 http://你的域名//wp-admin/profile.php 获取您的应用程序密码
+  website_host:
+    type: text-input
+    required: true
+    label:
+      en_US: your website host like https://domain.com
+      zh_Hans: 网站地址
+    placeholder:
+      en_US: Please input your website host
+      zh_Hans: 请输入你的网站地址
+    help:
+      en_US: example https://domain.com
+      zh_Hans: 示例 https://domain.com
+  db_host:
+    type: text-input
+    required: false
+    label:
+      en_US: MYSQL host
+      zh_Hans: MYSQL 地址
+    placeholder:
+      en_US: Please input your MYSQL host
+      zh_Hans: 请输入你的MYSQL 地址
+    help:
+      en_US: Please input your MYSQL host
+      zh_Hans: 请输入你的MYSQL 地址 指定接口需要数据库权限
+  db_port:
+    type: text-input
+    required: false
+    label:
+      en_US: MYSQL port
+      zh_Hans: MYSQL 端口
+    placeholder:
+      en_US: Please input your MYSQL port
+      zh_Hans: 请输入你的MYSQL 端口
+    help:
+      en_US: Please input your MYSQL port
+      zh_Hans: 请输入你的MYSQL 端口 指定接口需要数据库权限
+  db_user:
+    type: text-input
+    required: false
+    label:
+      en_US: MYSQL user
+      zh_Hans: MYSQL user
+    placeholder:
+      en_US: Please input your MYSQL user
+      zh_Hans: 请输入你的MYSQL 用户名
+    help:
+      en_US: Please input your MYSQL user
+      zh_Hans: 请输入你的MYSQL 用户名 指定接口需要数据库权限
+  db_password:
+    type: secret-input
+    required: false
+    label:
+      en_US: MYSQL password
+      zh_Hans: MYSQL password
+    placeholder:
+      en_US: Please input your MYSQL user password
+      zh_Hans: 请输入你的MYSQL 密码 指定接口需要数据库权限
+    help:
+      en_US: Please input your MYSQL user password
+      zh_Hans: 请输入你的MYSQL 密码 指定接口需要数据库权限
+  db_database:
+    type: text-input
+    required: false
+    label:
+      en_US: MYSQL database
+      zh_Hans: MYSQL database
+    placeholder:
+      en_US: Please input your MYSQL database
+      zh_Hans: 请输入你的MYSQL 数据库 指定接口需要数据库权限
+    help:
+      en_US: Please input your MYSQL database
+      zh_Hans: 请输入你的MYSQL 数据库 指定接口需要数据库权限
+tools:
+  - tools/user/query.yaml
+  - tools/user/create.yaml
+  - tools/user/update_avatar.yaml
+  - tools/user/update.yaml
+  - tools/user/delete.yaml
+  - tools/user/query_by_id.yaml
+  - tools/media/upload.yaml
+  - tools/media/update.yaml
+  - tools/media/delete.yaml
+  - tools/media/query.yaml
+  - tools/posts/query.yaml
+  - tools/posts/create.yaml
+  - tools/posts/update.yaml
+  - tools/posts/delete.yaml
+  - tools/tags/create.yaml
+  - tools/tags/update.yaml
+  - tools/tags/query.yaml
+  - tools/tags/delete.yaml
+  - tools/categories/create.yaml
+  - tools/categories/update.yaml
+  - tools/categories/delete.yaml
+  - tools/categories/query.yaml
+  - tools/comments/query.yaml
+  - tools/comments/create.yaml
+  - tools/comments/delete.yaml
+  - tools/comments/update.yaml
+  - tools/sql/execute.yaml
+extra:
+  python:
+    source: provider/wordpress_api.py

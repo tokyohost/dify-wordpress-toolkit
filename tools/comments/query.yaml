@@ -1,0 +1,59 @@
+identity:
+  name: wordpress-api-comments-query
+  author: tokyohost
+  label:
+    en_US: query comments
+    zh_Hans: 查询评论
+    pt_BR: query comments
+
+description:
+  human:
+    en_US: query wordpress comments by REST API
+    zh_Hans: 通过REST API 查询评论
+    pt_BR: query wordpress comments by REST API
+  llm: query wordpress comments by REST API
+parameters:
+  - name: commentId
+    type: number
+    required: false
+    label:
+      en_US: comment id
+      zh_Hans: 评论id
+      pt_BR: comment id
+    human_description:
+      en_US: The ID of the comment you want to query on
+      zh_Hans: 评论id
+      pt_BR: The ID of the comment you want to query on
+    llm_description: The ID of the comment you want to query on
+    form: llm
+  - name: post
+    type: number
+    required: false
+    label:
+      en_US: post id
+      zh_Hans: 文章id
+      pt_BR: post id
+    human_description:
+      en_US: Query comments for a specified post ID
+      zh_Hans: 查询指定文章id的评论
+      pt_BR: Query comments for a specified post ID
+    llm_description: Query comments for a specified post ID
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+
+
+extra:
+  python:
+    source: tools/tags/create.py

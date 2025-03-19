@@ -1,0 +1,98 @@
+identity:
+  name: wordpress-api-comments-create
+  author: tokyohost
+  label:
+    en_US: create comments
+    zh_Hans: 创建评论
+    pt_BR: create comments
+
+description:
+  human:
+    en_US: create wordpress comments by REST API
+    zh_Hans: 通过REST API 创建评论
+    pt_BR: create wordpress comments by REST API
+  llm: create wordpress comments by REST API
+parameters:
+  - name: post
+    type: number
+    required: true
+    label:
+      en_US: post id
+      zh_Hans: 文章id
+      pt_BR: post id
+    human_description:
+      en_US: The ID of the post you want to comment on
+      zh_Hans: 想评论的文章id
+      pt_BR: The ID of the post you want to comment on
+    llm_description: The ID of the post you want to comment on
+    form: llm
+  - name: content
+    type: string
+    required: true
+    label:
+      en_US: content
+      zh_Hans: 评论内容
+      pt_BR: content
+    human_description:
+      en_US: comments content
+      zh_Hans: 评论内容
+      pt_BR: comments content
+    llm_description: comments content
+    form: llm
+  - name: author_name
+    type: string
+    required: false
+    label:
+      en_US: author name
+      zh_Hans: 评论用户名
+      pt_BR: author name
+    human_description:
+      en_US: Anonymous user's name (can be omitted for logged-in users)
+      zh_Hans: 匿名用户的名字（已登录用户可省略）
+      pt_BR: Anonymous user's name (can be omitted for logged-in users)
+    llm_description: Anonymous user's name (can be omitted for logged-in users)
+    form: llm
+  - name: author_email
+    type: string
+    required: false
+    label:
+      en_US: author email
+      zh_Hans: 评论用户的邮箱
+      pt_BR: author email
+    human_description:
+      en_US: Anonymous user's email (can be omitted for logged-in users)
+      zh_Hans: 匿名用户的邮箱（已登录用户可省略）
+      pt_BR: Anonymous user's email (can be omitted for logged-in users)
+    llm_description: Anonymous user's email (can be omitted for logged-in users)
+    form: llm
+  - name: parent
+    type: number
+    required: false
+    label:
+      en_US: parent id
+      zh_Hans: 父评论 ID
+      pt_BR: parent id
+    human_description:
+      en_US: If you're replying to a comment, enter the parent comment ID
+      zh_Hans: 如果是回复某条评论，填入父评论 ID
+      pt_BR: If you're replying to a comment, enter the parent comment ID
+    llm_description: If you're replying to a comment, enter the parent comment ID
+    form: llm
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+
+
+extra:
+  python:
+    source: tools/tags/create.py

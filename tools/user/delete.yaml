@@ -1,0 +1,80 @@
+identity:
+  name: wordpress-api-user-delete
+  author: tokyohost
+  label:
+    en_US: delete user
+    zh_Hans: 删除用户
+    pt_BR: delete user
+
+description:
+  human:
+    en_US: delete wordpress user by REST API
+    zh_Hans: 通过REST API 删除用户
+    pt_BR: delete wordpress user by REST API
+  llm: delete wordpress user by REST API
+parameters:
+  - name: userId
+    type: number
+    required: true
+    label:
+      en_US: userId
+      zh_Hans: 用户id
+      pt_BR: userId
+    human_description:
+      en_US: user id
+      zh_Hans: 用户id
+      pt_BR:  user id
+    llm_description:  user id
+    form: llm
+  - name: reassign
+    type: number
+    required: true
+    label:
+      en_US: reassign userId
+      zh_Hans: 目标用户id
+      pt_BR: reassign userId
+    human_description:
+      en_US: The ID of the user to whom the deleted user's content is transferred
+      zh_Hans: 被删除用户内容转移的目标用户id
+      pt_BR:  The ID of the user to whom the deleted user's content is transferred
+    llm_description:  user id
+    form: llm
+  - name: force
+    type: select
+    required: false
+    default: False
+    label:
+      en_US: force delete
+      zh_Hans: 强制删除
+      pt_BR: force delete
+    human_description:
+      en_US: If the user is forcibly deleted, it will not be put in the recycle bin
+      zh_Hans: 强制删除用户
+      pt_BR: If the user is forcibly deleted, it will not be put in the recycle bin
+    llm_description: force delete user
+    form: llm
+    options:
+      - label:
+          en_US: force delete
+          zh_Hans: 强制删除
+        value: True
+      - label:
+          en_US: force delete (recycle bin)
+          zh_Hans: 非强制删除
+        value: False
+  - name: otherParamter
+    type: string
+    required: false
+    label:
+      en_US: otherParamter
+      zh_Hans: 其它参数
+      pt_BR: otherParamter
+    human_description:
+      en_US: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+      zh_Hans: 如果预设参数不满足可以在此添加其它参数(JSON 格式)
+      pt_BR: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    llm_description: If the preset parameters are not satisfied, you can add other parameters (JSON format) here.
+    form: llm
+extra:
+  python:
+    source: tools/user/delete.py
