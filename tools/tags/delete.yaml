@@ -44,11 +44,11 @@ parameters:
       - label:
           en_US: force delete
           zh_Hans: 强制删除
-        value: True
+        value: true
       - label:
           en_US: force delete (recycle bin)
           zh_Hans: 放入回收站
-        value: False
+        value: false
   - name: otherParamter
     type: string
     required: false

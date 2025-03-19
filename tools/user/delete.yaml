@@ -42,7 +42,7 @@ parameters:
   - name: force
     type: select
     required: false
-    default: False
+    default: true
     label:
       en_US: force delete
       zh_Hans: 强制删除
@@ -57,11 +57,11 @@ parameters:
       - label:
           en_US: force delete
           zh_Hans: 强制删除
-        value: True
+        value: true
       - label:
           en_US: force delete (recycle bin)
           zh_Hans: 非强制删除
-        value: False
+        value: false
   - name: otherParamter
     type: string
     required: false

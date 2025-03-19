@@ -43,11 +43,11 @@ parameters:
       - label:
           en_US: force delete
           zh_Hans: 永久删除，不进入回收站
-        value: True
+        value: true
       - label:
           en_US: force delete
           zh_Hans: 放入回收站
-        value: False
+        value: false
 extra:
   python:
     source: tools/categories/delete.py
