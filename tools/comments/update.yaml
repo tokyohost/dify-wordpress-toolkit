@@ -56,4 +56,4 @@ parameters:
 
 extra:
   python:
-    source: tools/tags/create.py
+    source: tools/comments/update.py

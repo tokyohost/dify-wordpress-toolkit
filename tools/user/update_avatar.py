@@ -5,6 +5,7 @@ from typing import Any
 import requests
 from dify_plugin import Tool
 from dify_plugin.entities.tool import ToolInvokeMessage
+from dify_plugin.errors.tool import ToolProviderCredentialValidationError
 from dify_plugin.file.entities import FileType
 from dify_plugin.file.file import File
 
@@ -20,11 +21,13 @@ class WordpressUserTool(Tool):
         if not api:
             raise Exception("token is required")
 
+        if not self.runtime.credentials.get("db_host"):
+            raise ToolProviderCredentialValidationError("If you want to use this feature, configure the database connection information in advance")
+
         if not tool_parameters.get('userid'):
             raise Exception("userid is required")
         if not tool_parameters.get('avatar_file'):
             raise Exception("avatar_file is required")
-        file = tool_parameters.get('avatar_file')
         image: File | None = tool_parameters.get("avatar_file")
         if not image:
             raise ValueError("Got no image")

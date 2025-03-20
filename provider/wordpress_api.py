@@ -12,7 +12,7 @@ class WordpressUsermanageProvider(ToolProvider):
         try:
             post = wordpress_api_utils(credentials)
             me = post.userMe()
-            if "db_host" in credentials:
+            if credentials.get("db_host"):
                 wordpress_post = wp_db_service(credentials)
         except Exception as e:
             raise ToolProviderCredentialValidationError(str(e))

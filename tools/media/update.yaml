@@ -44,7 +44,7 @@ parameters:
     required: false
     label:
       en_US: media alt_text
-      zh_Hans: 标题
+      zh_Hans: ALT
       pt_BR: media alt_text
     human_description:
       en_US: media alt_text

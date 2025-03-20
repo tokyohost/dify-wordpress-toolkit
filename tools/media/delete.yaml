@@ -27,19 +27,27 @@ parameters:
     llm_description:  media id
     form: llm
   - name: force
-    type: boolean
+    type: select
     required: false
-    default: False
     label:
-      en_US: need force delete?
-      zh_Hans: 是否强制删除
-      pt_BR: need force delete?
+      en_US: force delete
+      zh_Hans: 强制删除
+      pt_BR: force delete
     human_description:
-      en_US: force delete media
-      zh_Hans: 强制删除文件
-      pt_BR: force delete media
-    llm_description: force delete media
+      en_US: force delete
+      zh_Hans: 强制删除
+      pt_BR: force delete
+    llm_description: please input force delete
     form: llm
+    options:
+      - label:
+          en_US: force delete
+          zh_Hans: 永久删除，不进入回收站
+        value: true
+      - label:
+          en_US: force delete
+          zh_Hans: 放入回收站
+        value: false
   - name: otherParamter
     type: string
     required: false

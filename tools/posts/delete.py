@@ -18,6 +18,6 @@ class WordpressTool(Tool):
             raise Exception("postId is required")
 
 
-        result = api.delete_post(tool_parameters.get('postId'), tool_parameters.get('force'))
+        result = api.delete_post(tool_parameters)
 
         yield self.create_json_message(result)

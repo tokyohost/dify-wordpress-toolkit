@@ -15,7 +15,7 @@ description:
 parameters:
   - name: username
     type: string
-    required: true
+    required: false
     label:
       en_US: username
       zh_Hans: 用户名
@@ -25,6 +25,19 @@ parameters:
       zh_Hans: 根据用户名查询
       pt_BR: Query users based on their usernames
     llm_description: Query users based on their usernames
+    form: llm
+  - name: id
+    type: number
+    required: false
+    label:
+      en_US: userid
+      zh_Hans: 用户id
+      pt_BR: userid
+    human_description:
+      en_US: Query users based on their user id
+      zh_Hans: 根据用户名查询
+      pt_BR: Query users based on their user id
+    llm_description: Query users based on their user id
     form: llm
   - name: otherParamter
     type: string

@@ -1,9 +1,9 @@
-import json
+
 import re
+import threading
 
 import requests
-from requests.auth import HTTPBasicAuth
-
+thread_local_data = threading.local()
 def call_rest_api(method, url, auth=None, data=None, headers=None, params=None):
     """
     通用 REST API 调用方法
@@ -18,7 +18,7 @@ def call_rest_api(method, url, auth=None, data=None, headers=None, params=None):
     errinfo = ""
     try:
         fixed_url = re.sub(r'(?<!:)//+', '/', url)
-        print("url: {},data:{},headers:{},params:{}".format(fixed_url, data, headers, params))
+        print("url: {},data:{},headers:{},params:{},data:{}".format(fixed_url, data, headers, params,data))
 
         response = requests.request(
             method=method.upper(),
@@ -31,10 +31,20 @@ def call_rest_api(method, url, auth=None, data=None, headers=None, params=None):
         response.encoding = 'utf-8'
         print(response.text)
         errinfo = response.text
-        response.raise_for_status()  # 抛出 HTTP 错误（如 404、500）
-        return response.json()  # 返回 JSON 响应
+        response.raise_for_status()
+        # get page and total
+        total = response.headers.get("X-WP-Total")
+        total_page = response.headers.get("X-WP-TotalPages")
+        page_info = {
+            "total": total,
+            "total_pages": total_page,
+        }
+        thread_local_data.page_info = page_info
+        return response.json()
     except requests.exceptions.RequestException as e:
-        # if response.status_code == 400:
-        #     return json.loads(errinfo)
         raise Exception(errinfo)
 
+def get_page_info():
+    return getattr(thread_local_data, "page_info", {})
+def clear_page_info():
+    return delattr(thread_local_data, "page_info")

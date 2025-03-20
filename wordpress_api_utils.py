@@ -89,6 +89,23 @@ class wordpress_api_utils:
                 raise Exception(response.text)
         else:
             raise Exception(response.text)
+    def queryUser(self, tool_parameters):
+        self.proxy()
+        wp_url = self.wp_url + "/wp-json/wp/v2/users"
+        wp_username = self.wp_username
+        wp_password = self.wp_password
+        params = {
+        }
+        if tool_parameters.get('username'):
+            params['search'] = tool_parameters.get('username')
+
+        if tool_parameters.get("id"):
+            wp_url = wp_url + "/" + str(tool_parameters.get('id'))
+        params = utils.process_other_parameter(params, tool_parameters)
+        auth = HTTPBasicAuth(wp_username, wp_password)
+
+        result = rest_api_utils.call_rest_api("GET", wp_url, auth=auth, params=params)
+        return result
 
     def searchUserById(self, id):
         self.proxy()
@@ -243,7 +260,7 @@ class wordpress_api_utils:
     def query_media(self, tool_parameters):
 
         wp_url = self.wp_url + "/wp-json/wp/v2/media"
-        if "mediaId" in tool_parameters:
+        if tool_parameters.get("mediaId"):
             mediaId = tool_parameters['mediaId']
             if mediaId:
                 wp_url = wp_url + "/" + str(mediaId)
@@ -257,25 +274,23 @@ class wordpress_api_utils:
 
     def update_media(self, tool_parameters):
         self.proxy()
-        # WordPress 站点信息
-        wp_url = self.wp_url + "/wp-json/wp/v2/media/" + str(tool_parameters["mediaID"])
+        wp_url = self.wp_url + "/wp-json/wp/v2/media/" + str(tool_parameters["mediaId"])
         wp_username = self.wp_username
         wp_password = self.wp_password
-        # 认证
         auth = HTTPBasicAuth(wp_username, wp_password)
-        MEDIA_DATA = {
-            "title": tool_parameters["title"],
-            "alt_text": tool_parameters["alt_text"],
-            "caption": tool_parameters["caption"],
-            "description": tool_parameters["description"]
+        data = {
+            # "title": tool_parameters["title"],
+            # "alt_text": tool_parameters["alt_text"],
+            # "caption": tool_parameters["caption"],
+            # "description": tool_parameters["description"]
         }
-        MEDIA_DATA = utils.process_other_parameter(MEDIA_DATA, tool_parameters)
-        result = rest_api_utils.call_rest_api("POST", wp_url, auth=auth, data=MEDIA_DATA)
+        data.update(tool_parameters)
+        data = utils.process_other_parameter(data, tool_parameters)
+        result = rest_api_utils.call_rest_api("POST", wp_url, auth=auth, data=data)
         return result
 
     def query_posts(self, tool_parameters):
         self.proxy()
-        # WordPress 站点信息
         wp_url = self.wp_url + "/wp-json/wp/v2/posts"
         if "postsId" in tool_parameters:
             wp_url = wp_url + "/" + str(tool_parameters["postsId"])
@@ -285,7 +300,7 @@ class wordpress_api_utils:
         params = utils.process_other_parameter(params, tool_parameters)
         wp_username = self.wp_username
         wp_password = self.wp_password
-        # 认证
+
         auth = HTTPBasicAuth(wp_username, wp_password)
         result = rest_api_utils.call_rest_api("GET", wp_url, auth=auth, params=params)
         return result
@@ -306,32 +321,32 @@ class wordpress_api_utils:
     def getPostsData(self, tool_parameters):
         data = {
         }
-        if "content" in tool_parameters:
+        if  tool_parameters.get("content"):
             data["content"] = tool_parameters["content"]
-        if "title" in tool_parameters:
+        if tool_parameters.get("title"):
             data["title"] = tool_parameters["title"]
-        if "status" in tool_parameters:
+        if  tool_parameters.get("status"):
             data["status"] = tool_parameters["status"]
-        if "excerpt" in tool_parameters:
+        if  tool_parameters.get("excerpt"):
             data["excerpt"] = tool_parameters["excerpt"]
-        if "slug" in tool_parameters:
+        if  tool_parameters.get("slug"):
             data["slug"] = tool_parameters["slug"]
-        if "date" in tool_parameters:
+        if tool_parameters.get("date"):
             dt_obj = datetime.strptime(tool_parameters["date"], "%Y-%m-%d %H:%M:%S")
             # 转换为 "YYYY-MM-DDTHH:MM:SS" 格式
             formatted_date = dt_obj.strftime("%Y-%m-%dT%H:%M:%S")
             data["date"] = formatted_date
-        if "author" in tool_parameters:
+        if  tool_parameters.get("author"):
             data["author"] = tool_parameters["author"]
-        if "categories" in tool_parameters:
+        if tool_parameters.get("categories"):
             idlist = tool_parameters["categories"]
             ids = list(map(int, idlist.split(",")))
             data["categories"] = ids
-        if "tags" in tool_parameters:
+        if tool_parameters.get("tags"):
             idlist = tool_parameters["tags"]
             ids = list(map(int, idlist.split(",")))
             data["tags"] = ids
-        if "featured_media" in tool_parameters:
+        if tool_parameters.get("featured_media"):
             data["featured_media"] = tool_parameters["featured_media"]
         return utils.process_other_parameter(data, tool_parameters)
 
@@ -348,8 +363,10 @@ class wordpress_api_utils:
         result = rest_api_utils.call_rest_api("PUT", wp_url, auth=auth, data=data)
         return result
 
-    def delete_post(self, post_id, force):
+    def delete_post(self, tool_parameters):
         self.proxy()
+        post_id = tool_parameters.get('postId')
+        force = tool_parameters.get('force')
         wp_url = self.wp_url + "/wp-json/wp/v2/posts/" + str(post_id)
         wp_username = self.wp_username
         wp_password = self.wp_password
@@ -357,6 +374,7 @@ class wordpress_api_utils:
         if force:
             params["force"] = force.lower()
         auth = HTTPBasicAuth(wp_username, wp_password)
+        params = utils.process_other_parameter(params, tool_parameters)
 
         result = rest_api_utils.call_rest_api("DELETE", wp_url, auth=auth,params=params)
         return result
@@ -377,7 +395,7 @@ class wordpress_api_utils:
         data = {
 
         }
-        if "name" in tool_parameters:
+        if  tool_parameters.get("name"):
             data["name"] = tool_parameters["name"]
         if "slug" in tool_parameters:
             data["slug"] = tool_parameters["slug"]
@@ -441,7 +459,7 @@ class wordpress_api_utils:
     def update_categories(self, tool_parameters):
         data = self.getCategoriesData(tool_parameters)
         self.proxy()
-        wp_url = self.wp_url + "/wp-json/wp/v2/categories/" + str(tool_parameters["categoryId"])
+        wp_url = self.wp_url + "/wp-json/wp/v2/categories/" + str(tool_parameters.get("categoriesId"))
         wp_username = self.wp_username
         wp_password = self.wp_password
 
@@ -476,7 +494,7 @@ class wordpress_api_utils:
             wp_url = wp_url + "/" + str(tool_parameters["categoriesId"])
 
         if "categoriesName" in tool_parameters:
-            params["name"] = tool_parameters["categoriesName"]
+            params["search"] = tool_parameters["categoriesName"]
 
         auth = HTTPBasicAuth(wp_username, wp_password)
 
